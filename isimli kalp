@@ -1,0 +1,31 @@
+import turtle
+
+# Arka plan siyah
+turtle.bgcolor("black")
+
+# Kalp çizimi
+t = turtle.Turtle()
+t.hideturtle()
+t.pensize(3)
+t.color("red", "red")  # Kenar ve iç rengi kırmızı
+
+t.penup()
+t.goto(0, -100)
+t.pendown()
+
+t.begin_fill()
+t.setheading(140)
+t.forward(180)
+t.circle(-90, 200)
+t.setheading(60)
+t.circle(-90, 200)
+t.forward(180)  # Bu iki forward aynı uzunlukta olmalı
+t.end_fill()
+
+# Yazı çizimi
+t.penup()
+t.goto(0, 50)
+t.color("white")
+t.write("ELVİN", align="center", font=("Arial", 25, "bold"))
+
+turtle.done()
