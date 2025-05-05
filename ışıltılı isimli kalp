@@ -1,0 +1,60 @@
+import turtle
+import math
+import random
+
+# Ekranı ve turtle'ı hazırla
+screen = turtle.Screen()
+screen.bgcolor("black")
+screen.title("Ada Cemrem için <3")
+
+t = turtle.Turtle()
+t.color("pink")
+t.fillcolor("pink")
+t.pensize(2)
+t.speed(0)
+
+# Kalp çizimi ve dolgu
+t.penup()
+t.goto(0, 0)
+t.begin_fill()
+
+for angle in range(0, 360):
+    x = 160 * math.sin(math.radians(angle))**3
+    y = 130 * math.cos(math.radians(angle)) \
+        - 50 * math.cos(math.radians(2 * angle)) \
+        - 20 * math.cos(math.radians(3 * angle)) \
+        - 10 * math.cos(math.radians(4 * angle))
+    t.goto(x, y)
+    if angle == 0:
+        t.pendown()
+
+t.end_fill()
+
+# Parıltı efekti (Yayılma için radius artırıldı)
+sparkle = turtle.Turtle()
+sparkle.hideturtle()
+sparkle.speed(0)
+sparkle.penup()
+sparkle.color("white")
+
+for _ in range(100):
+    angle = random.uniform(0, 2 * math.pi)
+    radius = random.uniform(200, 300)  # Daha geniş bir alanda parıltılar
+    x = radius * math.cos(angle)
+    y = radius * math.sin(angle)
+    sparkle.goto(x, y)
+    sparkle.dot(random.randint(2, 5), "white")
+
+# Yazı: Etkileyici ve görkemli bir yazı ekle
+t.penup()
+t.goto(-150, 140)
+t.color("white")
+t.write("                      ada cemre", font=("Verdana", 30, "bold"), align="center")  # Fontu büyüttük ve kalınlaştırdık
+
+# Gölgelendirme efekti ekleyelim
+t.goto(-150, 135)
+t.color("pink")
+t.write("                      ada cemre", font=("Verdana", 30, "bold"), align="center")  # Gölgeleme rengi ekledik
+
+t.hideturtle()
+turtle.done()
